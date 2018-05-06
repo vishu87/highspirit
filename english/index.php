@@ -1,11 +1,11 @@
 <?php include('top.php'); 
-$dis = array("अम्बेडकर नगर","फैजाबाद", "सुल्तानपुर","देहरादून");
+$dis = array("अम्बेडकर नगर","फैजाबाद", "सुल्तानपुर","देहरादून","लखनऊ");
 $current_district = mysql_real_escape_string($_GET["dis"]);
 $current_group = mysql_real_escape_string($_GET["grp"]);
 $current_shop = mysql_real_escape_string($_GET["shp"]);
 //$type = mysql_real_escape_string($_GET["type"]);
 $type =3;
-$dis_names=array("","अकबरपुर","टाण्डा","फैजाबाद A","फैजाबाद B","सुल्तानपुर","देहरादून A","देहरादून B");
+$dis_names=array("","अकबरपुर","टाण्डा","फैजाबाद A","फैजाबाद B","सुल्तानपुर","देहरादून A","देहरादून B","लखनऊ");
 ?>
 <!DOCTYPE html>
 <html>
