@@ -122,7 +122,7 @@ $ar_details = array("स्टाक","आमद","ट्रांसफर","�
 $in_details = array("old_stock","stock_in","stock_transfer","initial_stock","sale","rate","total_cost","total_sum","final_stock");
 $brand_size = array("","650ml","330ml","500ml","275ml");
 
-$brand_size_new = ["1" => "650ml","3"=>"500ml","2"=>"330ml","4"=>"275ml"];
+$brand_size_new = array("1" => "650ml","3"=>"500ml","2"=>"330ml","4"=>"275ml");
 
 $total_sizes = 4;
 
