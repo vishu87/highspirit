@@ -22,7 +22,7 @@ $current_id = $_GET["current_id"];
 
 $timedate = strtotime($date_en.'-'.$month_en.'-'.$year_en);
 
-$total_sizes =4;
+$total_sizes = 4;
 
 foreach ($_POST["brand"] as $type_id) {
 	$flag = false;

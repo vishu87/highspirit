@@ -120,8 +120,8 @@ if(mysql_num_rows($sql_new) > 0){
 
 $ar_details = array("स्टाक","आमद","ट्रांसफर","योग","बिक्री","रेट","योग","कुल योग","बचा माल");
 $in_details = array("old_stock","stock_in","stock_transfer","initial_stock","sale","rate","total_cost","total_sum","final_stock");
-$brand_size = array("","650ml","330ml");
-$total_sizes = 2;
+$brand_size = array("","650ml","330ml","500ml","275ml");
+$total_sizes = 4;
 
 $total_form_data = 10;
 

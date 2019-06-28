@@ -22,7 +22,7 @@ $current_id = $_GET["current_id"];
 
 $timedate = strtotime($date_en.'-'.$month_en.'-'.$year_en);
 
-$total_sizes =4;
+$total_sizes = 4;
 
 for($i=1; $i<=$total_sizes;$i++){
 	$size_id = $i;

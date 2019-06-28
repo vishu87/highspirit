@@ -49,7 +49,10 @@
 	} else {
 		$query = mysql_query("SELECT id,name from shops_english", $link_local);
 	}
+
 	while ($row = mysql_fetch_array($query)) {
+
+		$count = 0;
 		
 		$q_ts = mysql_query("SELECT timestamp_day from sale_english where shop_id='$row[id]' order by timestamp_day desc limit 1 ",$link_local);
 		if(mysql_num_rows($q_ts) > 0){
@@ -82,6 +85,7 @@
 
 				if(mysql_query($query1.$query2.$query3, $link)) {
 					mysql_query("DELETE from sale_english where id='$row_sale[id]' ",$link_local);
+					$count++;
 				}
 			}
 
@@ -106,6 +110,7 @@
 
 				if(mysql_query($query1.$query2.$query3, $link)) {
 					mysql_query("DELETE from sale_english_final where id='$row_sale[id]' ",$link_local);
+					$count++;
 				}
 			}
 
@@ -130,12 +135,14 @@
 
 				if(mysql_query($query1.$query2.$query3, $link)) {
 					mysql_query("DELETE from sale_english_sum_final where id='$row_sale[id]' ",$link_local);
+					$count++;
 				}
 			}
 
 
 		}
-		echo $row["name"].': डाटा ट्रान्सफर हो चूका है। कृपया इंतज़ार करे..........<br>';
+
+		echo 'ID - '.$row["id"].' '.$row["name"].'-'.$count.': डाटा ट्रान्सफर हो चूका है। कृपया इंतज़ार करे..........<br>';
 	}
 
 	echo '*********************************************************************************<br>';
