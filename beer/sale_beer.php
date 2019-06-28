@@ -121,6 +121,9 @@ if(mysql_num_rows($sql_new) > 0){
 $ar_details = array("स्टाक","आमद","ट्रांसफर","योग","बिक्री","रेट","योग","कुल योग","बचा माल");
 $in_details = array("old_stock","stock_in","stock_transfer","initial_stock","sale","rate","total_cost","total_sum","final_stock");
 $brand_size = array("","650ml","330ml","500ml","275ml");
+
+$brand_size_new = ["1" => "650ml","3"=>"500ml","2"=>"330ml","4"=>"275ml"];
+
 $total_sizes = 4;
 
 $total_form_data = 10;
@@ -237,8 +240,8 @@ $total_form_data = 10;
 
 							$count_br = 0;
 							if($detail != 'total_sum'){
-								foreach ($brand_size as $size) {
-								if($count_br != 0) echo '<td>'.$size.'</td>';$count_br++;
+								foreach ($brand_size_new as $size_id => $size) {
+									echo '<td>'.$size.'</td>';$count_br++;
 								}
 							} else {
 								echo '<td>RS</td>';
@@ -261,7 +264,7 @@ $total_form_data = 10;
 								echo '<td><input type="text" name="'.$detail.'_'.$row_type["id"].'" id="'.$detail.'_'.$row_type["id"].'" class="'.$detail.'" value="'.$value.'" readonly></td>';
 								break;
 							case 'total_cost':
-								for($i = 1; $i <= $total_sizes; $i++) {
+								foreach ($brand_size_new as $i => $size_name) {
 									if($flag_new == 1){
 										$value = $array_day[$row_type["id"]][$i][$detail];
 									}else {
@@ -272,7 +275,7 @@ $total_form_data = 10;
 								}
 								break;
 							case 'final_stock':
-								for($i = 1; $i <= $total_sizes; $i++) { 
+								foreach ($brand_size_new as $i => $size_name) {
 									if($flag_new == 1){
 										$value = $array_day[$row_type["id"]][$i][$detail];
 									}else {
@@ -283,7 +286,7 @@ $total_form_data = 10;
 								break;	
 
 							case 'initial_stock':
-								for($i = 1; $i <= $total_sizes; $i++) { 
+								foreach ($brand_size_new as $i => $size_name) {
 									if($flag_new == 1){
 										$value = $array_day[$row_type["id"]][$i][$detail];
 										
@@ -294,7 +297,7 @@ $total_form_data = 10;
 									echo '<td><input type="text" name="'.$detail.'_'.$row_type["id"].'_'.$i.'" class="'.$detail.' '.$detail.'_'.$row_type["id"].'_'.$i.' '.$detail.'_'.$i.'" size_type="'.$i.'" brand_type="'.$row_type["id"].'" value="'.$value.'" readonly></td>'; }
 								break;
 							case 'old_stock':
-								for($i = 1; $i <= $total_sizes; $i++) { 
+								foreach ($brand_size_new as $i => $size_name) {
 									$flag_old = (sizeof($array_day[$row_type["id"]])>0)?0:1;
 
 									if($flag_new == 1){
@@ -311,7 +314,7 @@ $total_form_data = 10;
 								break;
 
 							case 'rate':
-								for($i = 1; $i <= $total_sizes; $i++) { 
+								foreach ($brand_size_new as $i => $size_name) {
 									if($flag_new == 1){
 										$value = $array_day[$row_type["id"]][$i][$detail];
 									} else {
@@ -331,7 +334,7 @@ $total_form_data = 10;
 
 							default:
 								
-								for($i = 1; $i <= $total_sizes; $i++) { 
+								foreach ($brand_size_new as $i => $size_name) {
 									if($flag_new == 1){
 										$value = $array_day[$row_type["id"]][$i][$detail];
 									} else {$value=''; }
@@ -351,7 +354,7 @@ $total_form_data = 10;
 			echo '<form id="final_form"><tr  style="font-size:13px; font-weight:bold;"><td>कुल योग </td>';
 			foreach ($in_details as $detail) {
 				if($detail == 'old_stock' || $detail == 'initial_stock' || $detail == 'final_stock' ){
-					for($i=1;$i<=$total_sizes;$i++) {
+					foreach ($brand_size_new as $i => $size_name) {
 						if($flag_new == 1){
 							$value = $array_day_final[$i][$detail];
 						}  else {
@@ -361,7 +364,7 @@ $total_form_data = 10;
 						echo '<td><input type="text" name="total_'.$detail.'_'.$i.'" id="total_'.$detail.'_'.$i.'" class="'.$detail.'" value="'.$value.'" readonly></td>';
 					}
 				} else if($detail != 'total_sum'){
-					for($i=1;$i<=$total_sizes;$i++) {
+					foreach ($brand_size_new as $i => $size_name) {
 						if($flag_new == 1){
 							$value = $array_day_final[$i][$detail];
 						}  else {
@@ -412,7 +415,7 @@ $total_form_data = 10;
 	</div>
 
 	<script type="text/javascript">
- 	var total_type = 10;
+ 	var total_type = 20;
  	var row_id =1;
  	var col_id = 1;
  	var input_id = 1;
